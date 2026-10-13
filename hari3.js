@@ -1,8 +1,8 @@
-function sapa (nama) {
+function sapa(nama) {
     console.log("Halo " + nama + ", selamat datang!");
 }
-sapa ("Andi");
-sapa ("Bayu");
+sapa("Andi");
+sapa("Bayu");
 
 function hitungLuasPersegiPanjang(panjang, lebar) {
     return panjang * lebar;
@@ -11,7 +11,7 @@ const luas = hitungLuasPersegiPanjang(10, 5);
 console.log("Luas persegi panjang adalah " + luas);
 
 function celsiusKeFahrenheit(celsius) {
-    return (celsius * 9/5) + 32;
+    return (celsius * 9 / 5) + 32;
 }
 const suhuFahrenheit = celsiusKeFahrenheit(37);
 console.log("Suhu dalam Fahrenheit adalah " + suhuFahrenheit);
@@ -27,32 +27,30 @@ function grade(nilai) {
         return "tidak lulus";
     }
 }
-const nilai = 53;
-const hasilGrade = grade(nilai);
-console.log("Nilai Anda adalah " + nilai + ", sehingga mendapatkan grade " + hasilGrade);
+const nilai = [85, 84, 70, 69, 55, 54];
+for (let i = 0; i < nilai.length; i++) {
+    const hasilGrade = grade(nilai[i]);
+    console.log("Nilai Anda adalah " + nilai[i] + ", sehingga mendapatkan grade " + hasilGrade);
+}
 
 function ganjilGenap(angka) {
-for (let i = 1; i <= angka; i++) {
-    if (i % 2 === 0) {
-        console.log(i + " adalah bilangan genap");
-    } else {
-        console.log(i + " adalah bilangan ganjil");
+    if (angka % 2 === 0) {
+        return "genap";
     }
+    return "ganjil";
 }
+for (let i = 1; i <= 5; i++) {
+    console.log(i + " adalah bilangan " + ganjilGenap(i));
 }
-ganjilGenap(5);
 
-function hitungHargaDiskon(hargaAwal, diskon) {
-    return hargaAwal - (hargaAwal * diskon);
+
+function hitungHargaDiskon(harga, persenDiskon) {
+    return harga - (harga * persenDiskon / 100);
 }
-const hargaAwal = 150000;
-const diskon = 0.2;
-const hargaDiskon = hitungHargaDiskon(hargaAwal, diskon);
-console.log("Harga awal: " + hargaAwal);
-console.log("Harga setelah diskon: " + hargaDiskon);
+console.log("Harga setelah diskon adalah " + hitungHargaDiskon(150000, 20));
 
 function jumlahSampaiN(n) {
-    let total = 0;  
+    let total = 0;
     for (let i = 1; i <= n; i++) {
         total += i;
     }
