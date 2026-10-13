@@ -1,41 +1,78 @@
-const harga = [15000,22000,8000,30000];
-const barang = ["Pertalite", "Pertamax", "Dexlite"];
-
+//latihan 1
+const barang = ["Pertamax", "Pertalite", "Solar", "Dexlite", "Premium"];
 console.log(barang[0]);
-console.log(barang[2]);    
-console.log(barang[1]);
+console.log(barang[barang.length - 1]);
 
-const buah = ["Apel", "Mangga"];
-buah.push("Semangka");
-buah.pop();
-buah.unshift("Jeruk");
-buah.shift();
-buah[0] = "Pisang";
+// latihan 2
+barang.push("Pertamax Turbo");
+console.log(barang);
+barang.pop();
+console.log(barang);
 
-// mencari dan memotong array
-const angka = [10, 20, 30, 40, 50];
-angka.includes(30); // true
-angka.indexOf(40); // 3
-angka.slice(1,3); // [20, 30]
-
-// perulangan array
-const nilai = [80, 65, 90];
-// cara 1: for biasa , kalau butuh nomor indeksnya
-for (let i = 0; i < nilai.length; i++) {
-    console.log("Indeks" + i + " : " + nilai[i]);
+// latihan 3
+for (let i = 0; i < barang.length; i++) {
+    console.log(barang[i]);
+}
+for (const item of barang) {
+    console.log(item);
 }
 
-// cara 2: for of , lebih ringkas kalau cuma butuh isinya saja
-for (const n of nilai) {
-    console.log(n);
-}
-
-// array di dalam fungsi
-function hitungTotal(daftarHarga) {
+// latihan 4
+const daftar = [15000, 22000, 8000, 30000]
+function hitungTotal(daftar){
     let total = 0;
-    for (const h of daftarHarga) {
-        total += h;
+    for (const item of daftar){
+        total += item;
     }
     return total;
 }
-console.log(hitungTotal([15000, 22000, 8000])); // 45000    
+console.log("Total harga semua barang adalah " + hitungTotal(daftar));
+
+// latihan 5
+const daftarAngka = [80, 65, 90, 75];
+function hitungRataRata(daftarAngka){
+    let total = 0;
+    for (const item of daftarAngka){
+        total += item;
+    }
+    return total / daftarAngka.length;
+}
+console.log("Rata-rata nilai adalah " + hitungRataRata(daftarAngka));
+
+// latihan 6
+const nilaiAngka = [12, 45, 7, 89, 23];
+function cariNilaiTertinggi(nilaiAngka){
+    let tertinggi = nilaiAngka[0];
+    for (const item of nilaiAngka){
+        if (item > tertinggi){
+            tertinggi = item;
+        } 
+    }
+    return tertinggi;
+}
+console.log("Nilai tertinggi adalah " + cariNilaiTertinggi(nilaiAngka));
+
+// latihan 7
+const daftarNilai = [80, 40, 55, 90, 54, 70];
+function hitungYangLulus(daftarNilai){
+    let lulus = 0;
+    for (const item of daftarNilai){
+        if (item >= 55){
+            lulus++;
+        }
+    }
+    return lulus;
+}
+console.log("Jumlah siswa yang lulus adalah " + hitungYangLulus(daftarNilai));
+
+//latihan 8
+function ambilGenap(daftarAngka){
+    const genap = [];
+    for (const item of daftarAngka){
+        if (item % 2 === 0){
+            genap.push(item);
+        }
+    }
+    return genap;
+}
+console.log("Bilangan genap dari daftar adalah " + ambilGenap([1, 2, 3, 4, 5, 6]));
