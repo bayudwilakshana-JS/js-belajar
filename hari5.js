@@ -25,14 +25,14 @@
 // console.log(daftarProduk1.length);
 
 // for (const p of daftarProduk){
-//     console.log(p.nama + ": Rp " + p.harga + " (stok " + p.stok + ")");
+//  console.log(p.nama + ": Rp " + p.harga + " (stok " + p.stok + ")");
 // }
 
 
 // latihan 1
 const siswa = {
-    nama : "Bayu",
-    usia : 15,
+    nama: "Bayu",
+    usia: 15,
     kelas: 10,
 };
 siswa.usia = 16;
@@ -40,7 +40,7 @@ siswa.alamat = "Jl.Rambutan"
 console.log(siswa);
 
 // latihan 2 
-function perkenalan(siswa){
+function perkenalan(siswa) {
     return "Halo, aku " + siswa.nama + ", umur " + siswa.usia + ", kelas " + siswa.kelas;
 }
 console.log(perkenalan(siswa));
@@ -48,20 +48,20 @@ console.log(perkenalan(siswa));
 // latihan 3 
 
 const daftarProduk = [
-    { nama : "Pertalite" , harga : 10000 , stok : 500},
-    { nama : "Pertamax" , harga : 16500 , stok : 300},
-    { nama : "Dexlite" , harga : 23700, stok : 0},
-    { nama : "Solar" , harga : 5000 , stok : 200},
+    { nama: "Pertalite", harga: 10000, stok: 500 },
+    { nama: "Pertamax", harga: 16500, stok: 300 },
+    { nama: "Dexlite", harga: 23700, stok: 0 },
+    { nama: "Solar", harga: 5000, stok: 200 },
 ];
 
 for (const item of daftarProduk) {
-    console.log(item);
+    console.log(item.nama + ": Rp " + item.harga + " (stok " + item.stok + ")");
 }
 
 //latihan 4
-function hitungTotalStok(daftarProduk){
-    let total =0;
-    for (const p of daftarProduk){
+function hitungTotalStok(daftarProduk) {
+    let total = 0;
+    for (const p of daftarProduk) {
         total += p.stok;
     }
     return total;
@@ -70,8 +70,8 @@ console.log(hitungTotalStok(daftarProduk));
 
 //latihan 5
 function hitungNilaiPersediaan(daftarProduk) {
-    let total =0;
-    for (const item of daftarProduk){
+    let total = 0;
+    for (const item of daftarProduk) {
         total += item.stok * item.harga;
     }
     return total;
@@ -87,23 +87,23 @@ function cariProduk(daftar, namaCari) {
             return produk;
         }
     }
-    
+
     // 3. Jika loop selesai sampai habis dan tidak ketemu, kembalikan null
     return null;
 }
 
 // === Tes dengan nama yang ADA ===
-console.log(cariProduk(daftarProduk, "Pertamax")); 
+console.log(cariProduk(daftarProduk, "Pertamax"));
 // Output: { nama: 'Pertamax', harga: 16500, stok: 300 }
 
 // === Tes dengan nama yang TIDAK ADA ===
-console.log(cariProduk(daftarProduk, "Pertalite Premium")); 
+console.log(cariProduk(daftarProduk, "Pertalite Premium"));
 // Output: null
 
-function ambilStokHabis(daftarProduk){
-    const habis =[];
- for (const item of daftarProduk){
-        if (item.stok === 0){
+function ambilStokHabis(daftarProduk) {
+    const habis = [];
+    for (const item of daftarProduk) {
+        if (item.stok === 0) {
             habis.push(item);
         }
     }
@@ -112,26 +112,29 @@ function ambilStokHabis(daftarProduk){
 console.log("Stok Habis : ", ambilStokHabis(daftarProduk));
 
 function jualProduk(daftarProduk, nama, jumlah) {
+    // cek apakah stok valid
+    if (jumlah <= 0) { return "Stok tidak valid"; }
     // 1. Loop setiap produk di dalam daftar
     for (const produk of daftarProduk) {
-        // 2. Cek apakah nama produk cocok (diabaikan huruf besar/kecilnya)
-        if (produk.nama) {
-            
+        // 2. Cek apakah nama produk cocok 
+        if (produk.nama === nama) {
+
             // 3. Cek apakah stok mencukupi
             if (produk.stok < jumlah) {
                 return "Stok tidak cukup";
             }
-            
+
             // 4. Jika cukup, kurangi stok dan kembalikan "Berhasil"
             produk.stok -= jumlah;
             return "Berhasil";
         }
     }
-    
+
     // 5. Jika loop selesai tapi produk tidak ditemukan sama sekali
-    return "Stok tidak cukup";
+    return "Produk tidak ditemukan";
 }
 
 // === Contoh Pengujian ===
-console.log(jualProduk(daftarProduk, "Pertalite", 100)); // "Berhasil"
-console.log(jualProduk(daftarProduk, "Pertalite", 1000)); // "Stok tidak cukup"
+console.log(jualProduk(daftarProduk, "Avtur", 10));
+
+console.log(daftarProduk);
